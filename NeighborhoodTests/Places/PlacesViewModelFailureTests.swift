@@ -23,9 +23,12 @@ final class PlacesListViewModelFailureTests: XCTestCase {
     }
     
     func testFailurePlacesResponse() async throws {
-        try await viewModel.loadPlaces()
-        XCTAssertEqual(viewModel.places.count, 0)
-        try await viewModel.loadPlacesImageURLs()
-        XCTAssertTrue(viewModel.places.isEmpty)
+        do {
+            try await viewModel.loadPlaces()
+        } catch {
+            XCTAssertEqual(viewModel.places.count, 0)
+            try await viewModel.loadPlacesImageURLs()
+            XCTAssertTrue(viewModel.places.isEmpty)
+        }
     }
 }

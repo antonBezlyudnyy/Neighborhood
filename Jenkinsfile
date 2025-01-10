@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Verify Project') {
             steps {
-                sh "ls -al ${PROJECT_DIR}" // Verifies the cloned project
+                sh "ls -al ${PROJECT_DIR}"
             }
         }
         stage('Build') {
